@@ -9,7 +9,7 @@
 }
 
 .swal2-styled.swal2-confirm {
-  background-color: #013B95 !important;
+  background-color: #006b00 !important;
 }
 
 body {
@@ -24,7 +24,7 @@ html {
 }
 
 #t1 {
-  color: #013B95;
+  color: #006b00;
   text-align: center;
 }
 #t2 {
@@ -33,7 +33,7 @@ html {
 }
 
 #rodape {
-  background: #013B95;
+  background: #006b00;
 
 }
 
@@ -43,7 +43,7 @@ html {
 }
 
 #btn {
-  background-color: #013B95;
+  background-color: #006b00;
   color: #ffffff;
 }
 
