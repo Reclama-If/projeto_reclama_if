@@ -27,3 +27,22 @@ def cadastrarMtt():
     cadastrarManifestante(nome, email, telefone)
 
     return redirect('/cadastrarManifestante')
+
+@app.route('/cadastrar_manifesto', methods=['POST'])
+def cadastrarManifesto():
+    nome = request.form['usuario']
+    email = request.form['email']
+    telefone = request.form['telefone']
+    tipoManifesto = request.form['tipoManifesto']
+    identificacao = request.form['identificacao']
+    manifesto = request.form['telefone']
+    formulario = request.form['form_manifesto']
+    checkboxAnonimato = request.form['anonimato']
+    anonimato = null
+    canal_manifestante = "Sis.ouvidoria"
+
+    cadastrarManifesto(nome, email, telefone,tipoManifesto,identificacao,manifesto,formulario,checkboxAnonimato,anonimato,canal_manifestante)
+
+    return redirect('/cadastrarManifestanto')
+
+

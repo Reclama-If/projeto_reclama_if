@@ -29,11 +29,15 @@ class Manifestacao(db.Model):
     status = db.Column(db.String(10), nullable=False)
     autoria = db.Column(db.String(100), nullable=False)
     anonimato = db.Column(db.Boolean, nullable=False)
-    canal_manifestacao = db.Column(db.String(20), nullable=False)
+    canal_manifestacao = db.Column(db.String(20), nullable=True)
     idManifestante = db.Column(db.Integer, db.ForeignKey('manifestante.id'), nullable=False)
-    idade = db.Column(db.Integer, nullable=False)
 
 def cadastrarManifestante(nome, email, telefone):
     novo_manifestante = Manifestante(nome=nome, email=email, telefone=telefone)
     db.session.add(novo_manifestante)
+    db.session.commit()
+
+def cadastrarManifesto(nome, manifesto, tipo_manifesto, identificacao, anonimato, canal_manifestante, email, telefone,):
+    novo_manifestanto = Manifestante(nome=nome, email=email, telefone=telefone, mensagem = manifesto, tipo = tipo_manifesto, autoria = identificacao, anonimato = anonimato, canal_manifestacao = canal_manifestante )
+    db.session.add(novo_manifesto)
     db.session.commit()
