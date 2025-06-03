@@ -38,5 +38,7 @@ def cadastrarManifestante(nome, email, telefone):
     db.session.commit()
 
 def cadastrarManifesto(nome, manifesto, tipo_manifesto, identificacao, anonimato, canal_manifestante, email, telefone,):
-    novo_manifestanto = Manifestante(nome=nome, email=email, telefone=telefone, mensagem = manifesto, tipo = tipo_manifesto, autoria = identificacao, anonimato = anonimato, canal_manifestacao = canal_manifestante )
-    db.session.add(novo_manifesto)
+    novo_manifestante = Manifestante(nome=nome, email=email, telefone=telefone)
+    novo_manifestacao = Manifestacao(mensagem = manifesto, tipo = tipo_manifesto, autoria = identificacao, anonimato = anonimato, canal_manifestacao = canal_manifestante )
+    db.session.add(novo_manifestante, novo_manifestacao)
+    db.session.commit()
