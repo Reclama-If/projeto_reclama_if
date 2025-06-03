@@ -31,13 +31,8 @@ class Manifestacao(db.Model):
     anonimato = db.Column(db.Boolean, nullable=False)
     canal_manifestacao = db.Column(db.String(20), nullable=True)
 
+
 def cadastrarManifestante(nome, email, telefone):
     novo_manifestante = Manifestante(nome=nome, email=email, telefone=telefone)
     db.session.add(novo_manifestante)
-    db.session.commit()
-
-def cadastrarManifesto(nome, manifesto, tipo_manifesto, identificacao, anonimato, canal_manifestante, email, telefone,):
-    novo_manifestante = Manifestante(nome=nome, email=email, telefone=telefone)
-    novo_manifesto = Manifestacao(mensagem = manifesto, tipo = tipo_manifesto, autoria = identificacao, anonimato = anonimato, canal_manifestacao = canal_manifestante )
-    db.session.add(novo_manifesto, novo_manifestante)
     db.session.commit()
