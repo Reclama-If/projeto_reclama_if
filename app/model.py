@@ -20,8 +20,6 @@ class Manifestante(db.Model):
     email = db.Column(db.String(50), nullable=False)
     telefone = db.Column(db.Integer, nullable=False)
 
-    Manifestacao = db.relationship('Manifestacao', backref='autor', lazy=True)
-
 class Manifestacao(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     mensagem = db.Column(db.String(500), nullable=False)
@@ -37,8 +35,9 @@ def cadastrarManifestante(nome, email, telefone):
     db.session.add(novo_manifestante)
     db.session.commit()
 
-def cadastrarManifesto(nome, manifesto, tipo_manifesto, identificacao, anonimato, canal_manifestante, email, telefone,):
+def cadastrarManiftt(nome, manifesto, tipo_manifesto, identificacao, anonimato, canal_manifestante, email, telefone,):
     novo_manifestante = Manifestante(nome=nome, email=email, telefone=telefone)
-    novo_manifestacao = Manifestacao(mensagem = manifesto, tipo = tipo_manifesto, autoria = identificacao, anonimato = anonimato, canal_manifestacao = canal_manifestante )
-    db.session.add(novo_manifestante, novo_manifestacao)
+    nova_manifestacao = Manifestacao(mensagem = manifesto, tipo = tipo_manifesto, autoria = identificacao, anonimato = anonimato, canal_manifestacao = canal_manifestante )
+    db.session.add(novo_manifestante)
+    db.session.add(nova_manifestacao)
     db.session.commit()

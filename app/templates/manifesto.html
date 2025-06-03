@@ -48,7 +48,7 @@
             <h2 class="col-md px-5 mb-4 mt-5" id="t1">Como acionar a Ouvidoria da Reclama IF:</h2>
           </b>
 
-          <form action="/cadastrar_manifesto"  method="POST"  class="align-center px-5 needs-validation mb-4" novalidate='' id="form_manifesto" onsubmit="return false">
+          <form action="/cadastrar_manifesto"  method="POST"  class="align-center px-5 needs-validation mb-4" novalidate='' id="form_manifesto">
 
             <input type="hidden" name="acao" value="salvar">
 
@@ -87,7 +87,7 @@
             <div class="row">
 
               <div class="col-12 col-md-6 mb-3">
-                <select class="form-select borda" aria-label="Default select example" name="tipo" id="tipoManifesto" required>
+                <select class="form-select borda" aria-label="Default select example" name="tipoManifesto" id="tipoManifesto" required>
                   <option value="" disabled selected>Tipo da mensagem</option>
                   <option value="Elogio">Elogio</option>
                   <option value="Informação">Informação</option>
@@ -102,7 +102,7 @@
               </div>
 
               <div class="col-12 col-md-6 mb-1">
-                <select class="form-select " aria-label="Default select example" name="teste" id="identificacao" required>
+                <select class="form-select " aria-label="Default select example" name="identificacao" id="identificacao" required>
                   <option value="" disabled selected>Sua identificação</option>
                   <option value="Aluno">Aluno</option>
                   <option value="Professor">Professor</option>
@@ -124,7 +124,7 @@
 
 
                 <div class="form-row form-check form-switch">
-                  <input class="form-check-input" type="checkbox" role="switch" id="anonimato" value="Sim" name="anonimato[]">
+                  <input class="form-check-input" type="checkbox" role="switch" id="anonimato" value="Sim" name="anonimato">
                   <label class="form-check-label" for="anonimato">Ficar em anonimato</label>
                 </div>
 
