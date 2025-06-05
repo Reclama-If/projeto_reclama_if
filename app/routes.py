@@ -34,13 +34,13 @@ def cadastrarManifesto():
     nome = request.form['usuario']
     email = request.form['email']
     telefone = request.form['telefone']
+    manifesto = request.form['manifesto']
     tipoManifesto = request.form['tipoManifesto']
     identificacao = request.form['identificacao']
-    manifesto = request.form['telefone']
     anonimato = request.form['anonimato']
     canal_manifestante = "Sis.ouvidoria"
 
-    cadastrarManiftt(nome, email, telefone,tipoManifesto,identificacao,manifesto,anonimato,canal_manifestante)
+    cadastrarManiftt(nome, email, telefone, manifesto, tipoManifesto, identificacao, anonimato, canal_manifestante)
 
     return redirect('/')
 
