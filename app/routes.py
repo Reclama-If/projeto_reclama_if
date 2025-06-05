@@ -44,4 +44,9 @@ def cadastrarManifesto():
 
     return redirect('/')
 
+@app.route('/consultar_manifesto')
+def consultarManifc():
+    consultaGeralManifestacao()
+
+    return str(consultaGeralManifestacao())
 
