@@ -37,16 +37,21 @@ def cadastrarManifesto():
     manifesto = request.form['manifesto']
     tipoManifesto = request.form['tipoManifesto']
     identificacao = request.form['identificacao']
-    anonimato = request.form['anonimato']
+
+    if(request.form['anonimato'] != None):
+        anonimato = request.form['anonimato']
+    else:
+        anonimato = "Não"
+
     canal_manifestante = "Sis.ouvidoria"
 
     cadastrarManiftt(nome, email, telefone, manifesto, tipoManifesto, identificacao, anonimato, canal_manifestante)
 
-    return redirect('/')
+    return redirect('/consultar_manifesto')
 
 @app.route('/consultar_manifesto')
 def consultarManifc():
-    consultaGeralManifestacao()
+    manifestacoes = consultaGeralManifestacao()
 
-    return str(consultaGeralManifestacao())
+    return render_template('exibir.html', manifestacoes=manifestacoes)
 

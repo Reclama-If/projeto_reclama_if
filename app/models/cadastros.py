@@ -4,6 +4,8 @@ from flask_sqlalchemy import SQLAlchemy
 #Importa a conexão com banco de dados
 from models.conexao import *
 
+from models.tabelas import *
+
 def cadastrarManifestante(nome, email, telefone):
     novo_manifestante = Manifestante(nome=nome, email=email, telefone=telefone)
     db.session.add(novo_manifestante)
