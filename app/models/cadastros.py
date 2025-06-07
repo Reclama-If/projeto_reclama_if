@@ -6,15 +6,13 @@ from models.conexao import *
 
 from models.tabelas import *
 
-def cadastrarManifestante(nome, email, telefone):
+def cadastrarManiftt(nome, email, telefone):
     novo_manifestante = Manifestante(nome=nome, email=email, telefone=telefone)
     db.session.add(novo_manifestante)
     db.session.commit()
 
 
-def cadastrarManiftt(nome, email, telefone, mensagem, tipo, autoria, anonimato, canal_manifestacao):
-    novo_manifestante = Manifestante(nome = nome, email = email, telefone = telefone)
-    nova_manifestacao = Manifestacao(mensagem = mensagem, tipo = tipo, status = "P", autoria = autoria, anonimato = anonimato, canal_manifestacao = canal_manifestacao )
-    db.session.add(novo_manifestante)
+def cadastrarManiftc(mensagem, tipo, autoria, anonimato, canal_manifestacao, id_manifestante):
+    nova_manifestacao = Manifestacao(mensagem = mensagem, tipo = tipo, status = "P", autoria = autoria, anonimato = anonimato, canal_manifestacao = canal_manifestacao, id_manifestante = id_manifestante)
     db.session.add(nova_manifestacao)
     db.session.commit()

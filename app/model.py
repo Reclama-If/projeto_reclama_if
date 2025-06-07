@@ -4,9 +4,7 @@ from models.tabelas import *
 #Importa os cadastros das tabelas do BD
 from models.cadastros import *
 
-def consultaGeralManifestacao():
-    manifestacoesQuery = Manifestacao.query.all()
+from models.consultas import *
 
-    manifestacoesDic = [manifestacao.trans_dic() for manifestacao in manifestacoesQuery]
+from models.verificacoes import *
 
-    return manifestacoesDic

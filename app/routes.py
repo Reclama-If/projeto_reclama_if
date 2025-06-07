@@ -17,17 +17,7 @@ def homepage():
 def telaCadMtt():
     return render_template('cadManifestante.html')
 
-#Rota para cadastrar manifestante
-@app.route('/cadastrar', methods=['POST'])
-def cadastrarMtt():
-    nome = request.form['nome']
-    email = request.form['email']
-    telefone = request.form['telefone']
-
-    cadastrarManifestante(nome, email, telefone)
-
-    return redirect('/cadastrarManifestante')
-
+#Rota para cadastrar manifestação e manifestante
 
 @app.route('/cadastrar_manifesto', methods=['POST'])
 def cadastrarManifesto():
@@ -44,14 +34,25 @@ def cadastrarManifesto():
         anonimato = "Não"
 
     canal_manifestante = "Sis.ouvidoria"
+    manifestantes = consultaGeralManifestantes()
 
-    cadastrarManiftt(nome, email, telefone, manifesto, tipoManifesto, identificacao, anonimato, canal_manifestante)
+    if(verificaExisteManifestante(email, manifestantes)[0]):
+        id_manifestante = verificaExisteManifestante(email, manifestantes)[1]
+
+        cadastrarManiftc(manifesto, tipoManifesto, identificacao, anonimato, canal_manifestante, id_manifestante)
+    else:
+        cadastrarManiftt(nome, email, telefone)
+
+        id_manifestante = verificaExisteManifestante(email, manifestantes)[1]
+
+        cadastrarManiftc(manifesto, tipoManifesto, identificacao, anonimato, canal_manifestante, id_manifestante)
 
     return redirect('/consultar_manifesto')
 
 @app.route('/consultar_manifesto')
 def consultarManifc():
-    manifestacoes = consultaGeralManifestacao()
+    manifestacoes = consultaGeralManifestacoes()
+    
 
     return render_template('home.html', manifestacoes=manifestacoes)
 

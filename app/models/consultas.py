@@ -6,9 +6,16 @@ from models.conexao import *
 
 from models.tabelas import *
 
-def consultaGeralManifestacao():
+def consultaGeralManifestacoes():
     manifestacoesQuery = Manifestacao.query.all()
 
     manifestacoesDic = [manifestacao.trans_dic() for manifestacao in manifestacoesQuery]
 
     return manifestacoesDic
+
+def consultaGeralManifestantes():
+    manifestantesQuery = Manifestante.query.all()
+
+    manifestantesDic = [manifestacao.trans_dic() for manifestacao in manifestantesQuery]
+
+    return manifestantesDic

@@ -32,6 +32,7 @@ class Manifestacao(db.Model):
     autoria = db.Column(db.String(100), nullable=False)
     anonimato = db.Column(db.String(10), nullable=False)
     canal_manifestacao = db.Column(db.String(20), nullable=True)
+    id_manifestante = db.Column(db.Integer, nullable=False)
 
     def trans_dic(self):
         return {coluna.name: getattr(self, coluna.name) for coluna in self.__table__.columns}
