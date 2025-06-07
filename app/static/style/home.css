@@ -425,3 +425,108 @@ a {
 .swal2-actions{
   z-index: 0 !important;
 }
+/* 
+nova parte do projeto */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+... */
+
+  li {
+            background: #fff;
+            margin-bottom: 15px;
+            padding: 15px 20px 15px 30px; /* espaço para a barra lateral */
+            border-radius: 8px;
+            box-shadow: 0 0 8px rgba(0,0,0,0.1);
+            transition: background 0.3s ease;
+            border-left: 12px solid transparent;
+        }
+        li:hover {
+            filter: brightness(0.95);
+        }
+        li.status-P {
+            border-left-color: #dc3545; /* vermelho */
+        }
+        li.status-R {
+            border-left-color: #28a745; /* verde */
+        }
+
+        /* Linha de cima: tipo e mensagem */
+        .linha-cima {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #ccc; /* linha fina separando */
+        }
+        .nome {
+            font-weight: bold;
+            font-size: 1.4em;
+            padding-right: 20px;
+            min-width: 100px;
+            text-transform: capitalize;
+        }
+        /* cores do tipo */
+        .nome.elogio       { color: #28a745; } /* verde */
+        .nome.informacao   { color: #007bff; } /* azul */
+        .nome.reclamacao   { color: #dc3545; } /* vermelho */
+        .nome.sugestao     { color: #ffc107; } /* amarelo */
+        .nome.denuncia     { color: #6f42c1; } /* roxo */
+        .nome.solicitacao  { color: #20c997; } /* verde azulado */
+        .nome.tipo-default { color: #333; }
+
+        .mensagem {
+            flex-grow: 1;
+            font-size: 1.1em;
+            color: #222;
+            word-wrap: break-word;
+        }
+
+        /* Linha de baixo: detalhes em colunas */
+        .linha-baixo {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.95em;
+            color: #555;
+        }
+        .coluna {
+            flex: 1 1 140px;
+            padding: 5px 10px;
+        }
+
+        /* Chaves com cor de acordo com o tipo da manifestação */
+        .titulo {
+            font-weight: bold;
+            margin-bottom: 4px;
+            font-style: italic;
+            user-select: none;
+            text-transform: capitalize;
+        }
+        .titulo.elogio       { color: #28a745; }
+        .titulo.informacao   { color: #007bff; }
+        .titulo.reclamacao   { color: #dc3545; }
+        .titulo.sugestao     { color: #ffc107; }
+        .titulo.denuncia     { color: #6f42c1; }
+        .titulo.solicitacao  { color: #20c997; }
+        .titulo.tipo-default { color: #333; }
