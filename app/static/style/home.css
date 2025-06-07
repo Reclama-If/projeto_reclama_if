@@ -4,6 +4,7 @@
   --header-height: 3rem;
   --nav-width: 68px;
   --first-color: #006b00;
+  --del-color: #ff0000;
   --first-color-light: #c3c6e6;
   --white-color: #FFFFFF;
   --body-font: "Nunito", sans-serif;
@@ -61,6 +62,10 @@
 
 .btn-primary {
   background: var(--first-color);
+}
+
+.btn-del {
+  background: var(--del-color);
 }
 
 *,
@@ -406,7 +411,7 @@ a {
 }
 
 .header-color {
-  background-color: #013B95;
+  background-color: #006b00;
 }
 
 .text-header {

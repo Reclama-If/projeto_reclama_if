@@ -53,5 +53,5 @@ def cadastrarManifesto():
 def consultarManifc():
     manifestacoes = consultaGeralManifestacao()
 
-    return render_template('exibir.html', manifestacoes=manifestacoes)
+    return render_template('home.html', manifestacoes=manifestacoes)
 
