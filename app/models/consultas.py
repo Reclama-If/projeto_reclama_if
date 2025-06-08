@@ -19,3 +19,19 @@ def consultaGeralManifestantes():
     manifestantesDic = [manifestacao.trans_dic() for manifestacao in manifestantesQuery]
 
     return manifestantesDic
+
+def consultaEspManifestacao(id):
+    manifestacaoQuery = Manifestacao.query.get(id)
+
+    if(manifestacaoQuery):
+        manifestacaoDic = manifestacaoQuery.trans_dic()
+
+        return manifestacaoQuery, manifestacaoDic
+
+def consultaEspManifestante(id):
+    manifestanteQuery = Manifestante.query.get(id)
+
+    if(manifestanteQuery):
+        manifestanteDic = manifestanteQuery.trans_dic()
+
+        return manifestanteQuery, manifestanteDic

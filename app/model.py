@@ -8,3 +8,5 @@ from models.consultas import *
 
 from models.verificacoes import *
 
+from models.edicoes import *
+

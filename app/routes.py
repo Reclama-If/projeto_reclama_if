@@ -52,7 +52,30 @@ def cadastrarManifesto():
 @app.route('/consultar_manifesto')
 def consultarManifc():
     manifestacoes = consultaGeralManifestacoes()
+    manifestantes = consultaGeralManifestantes()
+
+    return render_template('home.html', manifestacoes=manifestacoes, manifestantes=manifestantes)
+
+@app.route('/editar_manifesto', methods=['POST'])
+def editarManifestacaoEmanifestante():
+    id_manifestante = request.form.get('editIdManifestante')
+    nome = request.form.get('editNome')
+    email = request.form.get('editEmail')
+    telefone = request.form.get('editTelefone')
+
+    id = request.form.get('editId')
+    mensagem = request.form.get('editManifesto')
+    tipo = request.form.get('editTipo')
+    autoria = request.form.get('editIdentificacao')
+
+    anonimato = 'Sim' if request.form.get('editAnonimato') == 'on' else 'Não'
+
+    canal_manifestacao = request.form.get('edit_canal_da_manifestacao')
     
+    manifestacao = consultaEspManifestacao(id)[0]
+    manifestante = consultaEspManifestante(id_manifestante)[0]
 
-    return render_template('home.html', manifestacoes=manifestacoes)
+    editManifestacao(manifestacao, mensagem, tipo, autoria, anonimato, canal_manifestacao)
+    editManifestante(manifestante, nome, email, telefone)
 
+    return redirect('/consultar_manifesto')
