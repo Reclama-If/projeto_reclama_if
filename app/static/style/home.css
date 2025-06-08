@@ -530,3 +530,9 @@ nova parte do projeto */
         .titulo.denuncia     { color: #6f42c1; }
         .titulo.solicitacao  { color: #20c997; }
         .titulo.tipo-default { color: #333; }
+
+        ul {
+        list-style: none;
+        padding: 0; /* opcional, para remover o recuo da lista */
+        margin: 0;  /* opcional, para controle total do espaçamento */
+        } 
