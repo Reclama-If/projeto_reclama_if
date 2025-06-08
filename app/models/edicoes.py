@@ -22,4 +22,4 @@ def editManifestante(manifestante, nome, email, telefone):
         manifestante.email = email
         manifestante.telefone = telefone
 
-        db.session.commit
+        db.session.commit()

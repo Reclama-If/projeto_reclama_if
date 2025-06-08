@@ -31,8 +31,6 @@ document.addEventListener('DOMContentLoaded', function () {
             document.getElementById('editTelefone').value = telefone;
 
             document.getElementById('editAnonimato').checked = (anonimato === "Sim");
-
-            console.log("Modal de edição aberto com sucesso.");
         });
     }
 });

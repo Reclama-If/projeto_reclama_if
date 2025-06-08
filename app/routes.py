@@ -79,3 +79,13 @@ def editarManifestacaoEmanifestante():
     editManifestante(manifestante, nome, email, telefone)
 
     return redirect('/consultar_manifesto')
+
+@app.route('/deletar_manifesto', methods=['POST'])
+def delManiftc():
+    id = request.form.get('delId')
+    
+    manifestacao = consultaEspManifestacao(id)[0]
+
+    delManifestacao(manifestacao)
+
+    return redirect('/consultar_manifesto')

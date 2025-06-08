@@ -10,3 +10,4 @@ from models.verificacoes import *
 
 from models.edicoes import *
 
+from models.deletes import *

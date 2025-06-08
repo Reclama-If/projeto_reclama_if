@@ -8,7 +8,7 @@ def verificaExisteManifestante(email, manifestantes):
         ids.sort()
         idProxUsuario = ids[-1]+1
     else:
-        idProxUsuario = None
+        idProxUsuario = 1
 
     emails = [manifestante['email'] for manifestante in manifestantes]
 
