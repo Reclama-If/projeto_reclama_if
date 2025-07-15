@@ -11,3 +11,5 @@ from models.verificacoes import *
 from models.edicoes import *
 
 from models.deletes import *
+
+from models.envia_email import *

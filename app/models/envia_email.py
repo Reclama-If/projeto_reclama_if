@@ -1,3 +1,7 @@
+from flask_sqlalchemy import SQLAlchemy
+from models.conexao import *
+from models.tabelas import *
+
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -15,7 +19,7 @@ def enviar_email(destinatario, assunto, mensagem):
     msg["To"] = destinatario
     msg["Subject"] = assunto
 
-    msg.attach(MIMEText(mensagem, 'plain'))
+    msg.attach(MIMEText(mensagem, 'html'))
 
     try: 
         # Conecta ao servidor SMTP
@@ -34,4 +38,4 @@ def enviar_email(destinatario, assunto, mensagem):
         server.quit()  # Encerra a conexão com o servidor SMTP
 
 # Exemplo de uso
-enviar_email("samuelrocha.com.com@gmail.com", "Teste de envio", "Olá Samuelzinho")
+

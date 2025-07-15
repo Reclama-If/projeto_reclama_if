@@ -89,3 +89,17 @@ def delManiftc():
     delManifestacao(manifestacao)
 
     return redirect('/consultar_manifesto')
+
+
+
+@app.route('/enviar_email', methods=['POST'])
+def envMsg():
+ 
+    destinatario = request.form.get('resEmail')
+    titulo = request.form.get('tituloResManifesto')
+    mensagem = request.form.get('msgResManifesto')
+    
+
+    enviar_email(destinatario,titulo,mensagem)
+
+    return redirect('/consultar_manifesto')
