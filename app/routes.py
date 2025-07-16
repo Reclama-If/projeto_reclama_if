@@ -1,7 +1,11 @@
 #Importações do Flask
 from main import *
 from model import *
+from login import *
 from flask import render_template, request, redirect
+
+#Importação para gerar senhas seguras
+from werkzeug.security import generate_password_hash, check_password_hash
 
 #Importações de arquivos.py
 
@@ -50,6 +54,7 @@ def cadastrarManifesto():
     return redirect('/consultar_manifesto')
 
 @app.route('/consultar_manifesto')
+@login_required
 def consultarManifc():
     manifestacoes = consultaGeralManifestacoes()
     manifestantes = consultaGeralManifestantes()
@@ -89,3 +94,33 @@ def delManiftc():
     delManifestacao(manifestacao)
 
     return redirect('/consultar_manifesto')
+
+@app.route('/login')
+def login():
+    return render_template('login.html')
+
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return render_template('login.html')
+
+@app.route('/cadastrarAdm', methods=['GET', 'POST'])
+def cadastrarAdm():
+    if request.method == 'POST':
+        nome = request.form['nome']
+        email = request.form['email']
+        senha = request.form['senha']
+        senha_segura = generate_password_hash(senha, method='sha256')
+        autoria = request.form['autoria']
+
+        # Verifica se já existe usuário com esse nome
+        if Administrador.query.filter_by(username=nome).first():
+            return render_template('cadastrarAdm.html')
+
+        # Cria novo usuário com senha segura
+        cadastrarAdmin(nome, email, senha_segura, autoria)
+
+        return render_template('login.html')
+
+    return render_template('cadastrarAdm.html')

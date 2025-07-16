@@ -16,3 +16,9 @@ def cadastrarManiftc(mensagem, tipo, autoria, anonimato, canal_manifestacao, id_
     nova_manifestacao = Manifestacao(mensagem = mensagem, tipo = tipo, status = "P", autoria = autoria, anonimato = anonimato, canal_manifestacao = canal_manifestacao, id_manifestante = id_manifestante)
     db.session.add(nova_manifestacao)
     db.session.commit()
+
+
+def cadastrarAdmin(id, nome, email, senha, autoria):
+    novo_admin = Administrador(id = id, nome = nome, email = email, senha = senha, autoria = autoria)
+    db.session.add(novo_admin)
+    db.session.commit()
