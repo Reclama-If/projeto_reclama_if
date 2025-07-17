@@ -13,13 +13,14 @@ def enviar_email(destinatario, assunto, mensagem):
     remetente = "reclamaifce@gmail.com"  # Corrigido: nome da variável
     senha = "wojn pkhs mgko qqih"  
 
+    print("Email asenviado com sucesso!")
     # Criação da mensagem
     msg = MIMEMultipart()
     msg["From"] = remetente
     msg["To"] = destinatario
     msg["Subject"] = assunto
 
-    msg.attach(MIMEText(mensagem, 'html'))
+    msg.attach(MIMEText(mensagem, 'plain'))
 
     try: 
         # Conecta ao servidor SMTP

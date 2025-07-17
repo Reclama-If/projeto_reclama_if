@@ -83,7 +83,7 @@ def editarManifestacaoEmanifestante():
 @app.route('/deletar_manifesto', methods=['POST'])
 def delManiftc():
     id = request.form.get('delId')
-    
+   
     manifestacao = consultaEspManifestacao(id)[0]
 
     delManifestacao(manifestacao)
@@ -98,8 +98,9 @@ def envMsg():
     destinatario = request.form.get('resEmail')
     titulo = request.form.get('tituloResManifesto')
     mensagem = request.form.get('msgResManifesto')
-    
+      
 
-    enviar_email(destinatario,titulo,mensagem)
-
+    enviar_email(destinatario ,titulo , mensagem)
+  
+     
     return redirect('/consultar_manifesto')

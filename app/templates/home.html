@@ -518,18 +518,18 @@
                         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" data-bs-target="#visManifestoModal" data-bs-toggle="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form id="form-res-manifesto" class="needs-validation" onsubmit="return false" novalidate="">
+                        <form id="form-res-manifesto" class="needs-validation" novalidate="" method="POST" action="/enviar_email">
                             Encaminhar para:
                             <div class="form-row mb-3">
 
-                                <input type="email" class="form-control borda" id="resEmail" name="email" aria-describedby="emailHelp" placeholder="Email" required>
+                                <input type="email" class="form-control borda" id="resEmail" name="resEmail" aria-describedby="emailHelp" placeholder="Email" required>
                                 <div class="invalid-feedback">
                                     Preencha um email válido
                                 </div>
                             </div>
                             <div class="form-row mb-4">
                                 Titulo:
-                                <textarea class="form-control borda" aria-label="With textarea" placeholder="Digite a sua mensagem" name="manifesto" id="tituloResManifesto" rows="1" required></textarea>
+                                <textarea class="form-control borda" aria-label="With textarea" placeholder="Digite a sua mensagem" name="tituloResManifesto" id="tituloResManifesto" rows="1" required></textarea>
                                 <div class="invalid-feedback">
                                     Preencha a sua mensagem
                                 </div>
@@ -537,18 +537,19 @@
 
                             <div class="form-row mb-4">
                                 Mensagem:
-                                <textarea class="form-control borda" aria-label="With textarea" placeholder="Digite a sua mensagem" name="manifesto" id="msgResManifesto" rows="6" required></textarea>
+                                <textarea class="form-control borda" aria-label="With textarea" placeholder="Digite a sua mensagem" name="msgResManifesto" id="msgResManifesto" rows="6" required></textarea>
                                 <div class="invalid-feedback">
                                     Preencha a sua mensagem
                                 </div>
                             </div>
+                            <div class="modal-footer">
+                                <button type="reset" class="btn btn-primary border-0"  data-bs-toggle="modal">Voltar</button>
+                                <button type="submit" class="btn btn-primary border-0"  id="enviarManifesto">Responder</button>
+
+                            </div>
                         </form>
                     </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-primary border-0" data-bs-target="#visManifestoModal" data-bs-toggle="modal">Voltar</button>
-                        <button class="btn btn-primary border-0" data-bs-target="#visManifestoModal" onclick="resManifestante(this.value)" value="" id="enviarManifesto">Responder</button>
-
-                    </div>
+              
                 </div>
             </div>
         </div>
