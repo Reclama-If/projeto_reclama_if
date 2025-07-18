@@ -10,8 +10,10 @@ document.addEventListener('DOMContentLoaded', function () {
             const id = button.getAttribute('data-id');
             const id_manifestante = button.getAttribute('data-id-manifestante');
             const email = button.getAttribute('data-email');
+            const nome = button.getAttribute('data-nome');
 
             document.getElementById('resEmail').value = email;
+            document.getElementById('nomeManifestante').value = nome;
 
         });
     }

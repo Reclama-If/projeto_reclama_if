@@ -92,15 +92,17 @@ def delManiftc():
 
 
 
+from datetime import datetime
+
 @app.route('/enviar_email', methods=['POST'])
 def envMsg():
- 
-    destinatario = request.form.get('resEmail')
+    email = request.form.get('resEmail')
     titulo = request.form.get('tituloResManifesto')
     mensagem = request.form.get('msgResManifesto')
-      
+    nome = request.form.get('nomeManifestante')
 
-    enviar_email(destinatario ,titulo , mensagem)
-  
-     
+
+    print(nome, "yeste")
+    
+    enviar_email(email, nome, titulo, mensagem)
     return redirect('/consultar_manifesto')

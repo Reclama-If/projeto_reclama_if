@@ -18,6 +18,7 @@
 <script src="{{ url_for('static', filename='script/carregaEditManifestacao.js') }}" defer></script>
 <script src="{{ url_for('static', filename='script/carregaDelManifestacao.js') }}" defer></script>
 <script src="{{ url_for('static', filename='script/carregaEnvEmail.js') }}" defer></script>
+<script src="{{ url_for('static', filename='script/carregaDetManifestacao.js') }}" defer></script>
 
 </head>
 
@@ -130,17 +131,29 @@
                                             {% endif %}
                                         {% endfor %}
                                         style="color:white;">  Editar Manifesto </button>
-                                        <button 
+                                      
+                                    
+                                     <button 
                                         class="btn btn-primary btn-sm border-0 m-2" 
                                         data-bs-toggle="modal" 
-                                        data-bs-target="#responderModal"
+                                        data-bs-target="#detModal"
+                                        data-status="{{ manifestacao.status }}"
                                         data-id="{{ manifestacao.id }}"
+                                        data-tipo="{{ manifestacao.tipo }}"
+                                        data-mensagem="{{ manifestacao.mensagem }}"
+                                        data-status="{{ manifestacao.status }}"
+                                        data-autoria="{{ manifestacao.autoria }}"
+                                        data-anonimato="{{ manifestacao.anonimato }}"
+                                        data-canal="{{ manifestacao.canal_manifestacao }}"
+                                        data-id-manifestante="{{ manifestacao.id_manifestante }}"
                                         {% for manifestante in manifestantes %}
                                             {% if manifestante.id == manifestacao.id_manifestante %}  
+                                                data-nome="{{ manifestante.nome }}"
                                                 data-email="{{ manifestante.email }}"
+                                                data-telefone="{{ manifestante.telefone }}"
                                             {% endif %}
                                         {% endfor %}
-                                        style="color:white;">  Responder Manifesto</button>
+                                        style="color:white;">Detalhes </button>
                                     </div>
                                 </div>
                             </li>
@@ -291,7 +304,7 @@
 
 
         <!-- Modal Visualizar-->
-        <div class="modal fade" id="visManifestoModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="visManifestoModalLabel" aria-hidden="true">
+        <div class="modal fade" id="detModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="visManifestoModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header header-color">
@@ -313,29 +326,29 @@
                                             <ul class="timeline">
                                                 <li class="timeline-item mb-2 ">
                                                     <div class="row">
-                                                        <h5 class="fw-bold col-4 me-1">Nome:</h5>
-                                                        <p class="text-muted fw-bold col-8" id="visNomeManifestante"></p>
+                                                        <h5 class="fw-bold col-4 me-1" >Nome:</h5>
+                                                        <p class="text-muted fw-bold col-8" id="detNomeManifestante" name="detNomeManifestante"></p>
                                                     </div>
                                                 </li>
 
                                                 <li class="timeline-item mb-3">
                                                     <div class="row">
                                                         <h5 class="fw-bold col-4 me-1">Email:</h5>
-                                                        <p class="text-muted mb-2 fw-bold col-8 " id="visEmailManifestante"></p>
+                                                        <p class="text-muted mb-2 fw-bold col-8 " id="detEmailManifestante" name="detEmailManifestante"></p>
                                                     </div>
                                                 </li>
 
                                                 <li class="timeline-item mb-3 ">
                                                     <div class="row">
                                                         <h5 class="fw-bold col-4 me-3">Telefone:</h5>
-                                                        <p class="text-muted mb-2 fw-bold col-8 " id="visTelefoneManifestante"></p>
+                                                        <p class="text-muted mb-2 fw-bold col-8 " id="detTelefoneManifestante" name="detTelefoneManifestante"></p>
                                                     </div>
                                                 </li>
 
                                                 <li class="timeline-item mb-3 ">
                                                     <div class="row">
                                                         <h5 class="fw-bold col-4 me-3">Identificação:</h5>
-                                                        <p class="text-muted mb-2 fw-bold  col-8" id="visReferenciamentoManifestante"></p>
+                                                    <p class="text-muted mb-2 fw-bold  col-8" id="detReferenciamentoManifestante" name="detReferenciamentoManifestante"></p>
                                                     </div>
                                                 </li>
 
@@ -369,28 +382,28 @@
                                                 <li class="timeline-item mb-2 ">
                                                     <div class="row">
                                                         <h5 class="fw-bold col-4 me-2">Status:</h5>
-                                                        <p class="text-muted fw-bold col-8" id="visStatus"></p>
+                                                        <p class="text-muted fw-bold col-8" id="detStatus" name="detStatus"></p>
                                                     </div>
                                                 </li>
 
                                                 <li class="timeline-item mb-3">
                                                     <div class="row">
                                                         <h5 class="fw-bold col-4 me-3">Tipo:</h5>
-                                                        <p class="text-muted mb-2 fw-bold col-8 " id="visTipo"></p>
+                                                        <p class="text-muted mb-2 fw-bold col-8 " id="detTipo" name="detTipo"></p>
                                                     </div>
                                                 </li>
 
                                                 <li class="timeline-item mb-3 ">
                                                     <div class="row">
                                                         <h5 class="fw-bold col-6 me-3">Canal de Manifestação:</h5>
-                                                        <p class="text-muted mb-2 fw-bold col-6 " id="visCanalManifestacao"></p>
+                                                        <p class="text-muted mb-2 fw-bold col-6 " id="detCanalManifestacao" name="detCanalManifestacao"></p>
                                                     </div>
                                                 </li>
 
                                                 <li class="timeline-item mb-3 col-12">
                                                     <div class="row textoCompleto">
                                                         <h5 class="fw-bold col-12 me-n1">Manifesto:</h5>
-                                                        <p class="text-muted mb-2 fw-bold col-12 expander" id="visManifesto"></p>
+                                                        <p class="text-muted mb-2 fw-bold col-12 expander" id="detManifesto" name="detManifesto"></p>
                                                     </div>
                                                 </li>
 
@@ -427,7 +440,7 @@
                                                         </span>
 
                                                         <h5 class="fw-bold">Data de geração </h5>
-                                                        <span class="text-muted mb-2 fw-bold" id="visDataGeracao"></span>
+                                                        <span class="text-muted mb-2 fw-bold" id="detDataGeracao"></span>
 
                                                     </li>
 
@@ -494,10 +507,13 @@
 
                             </div>
 
+                            <button 
+                            class="btn btn-primary border-0 float-end btn-sm me-2"
+                            data-bs-toggle="modal" 
+                            data-bs-target="#responderModal"
+                            style="color:white;"> Responder Manifesto </button>  
 
-                            <button class="btn btn-primary border-0 float-end btn-sm" name="enviar" data-bs-target="#ModalEncaminhar" data-bs-toggle="modal">Encaminhar</button>
-
-                            <button class="btn btn-primary border-0 float-end btn-sm me-2" name="enviar" data-bs-target="#ModalResponder" data-bs-toggle="modal">Responder</button>
+                        
                         </div>
                     </div>
                 </div>
@@ -519,6 +535,9 @@
                     </div>
                     <div class="modal-body">
                         <form id="form-res-manifesto" class="needs-validation" novalidate="" method="POST" action="/enviar_email">
+
+                            <input hidden id="nomeManifestante" name="nomeManifestante">
+
                             Encaminhar para:
                             <div class="form-row mb-3">
 
